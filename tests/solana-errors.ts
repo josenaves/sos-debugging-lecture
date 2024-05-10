@@ -12,6 +12,10 @@ describe("solana-errors", () => {
   const user = Keypair.generate();
   const data = Keypair.generate();
 
+  // before("prepare", async() => {
+  //   await airdrop(anchor.getProvider().connection, user.publicKey);
+  // });
+
   it("Is initialized!", async () => {
 
     console.log("user balance = " + await connection.getBalance(user.publicKey))
@@ -22,7 +26,7 @@ describe("solana-errors", () => {
         data: data.publicKey,
         systemProgram: SystemProgram.programId
       })
-      .signers([user])
+      .signers([user, data])
       .rpc();
 
     console.log("Your transaction signature", tx);
